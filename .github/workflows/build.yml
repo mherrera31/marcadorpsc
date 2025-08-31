@@ -2,12 +2,12 @@ name: Build Installers
 
 on:
   push:
-    branches: ["main"] # Runs every time you push to the main branch
-  workflow_dispatch: # Allows you to run it manually from GitHub
+    branches: ["main"]
+  workflow_dispatch:
 
 jobs:
   build-macos:
-    runs-on: macos-latest # Use a macOS virtual machine
+    runs-on: macos-latest
 
     steps:
       - name: Check out repository
@@ -33,7 +33,7 @@ jobs:
           path: dist/*.dmg
           
   build-windows:
-    runs-on: windows-latest # Use a Windows virtual machine
+    runs-on: windows-latest
 
     steps:
       - name: Check out repository
@@ -50,7 +50,7 @@ jobs:
           pip install briefcase
           briefcase create
           briefcase build
-          briefcase package
+          briefcase package --no-input
 
       - name: Upload Windows Artifact
         uses: actions/upload-artifact@v4
