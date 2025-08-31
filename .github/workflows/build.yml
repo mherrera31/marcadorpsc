@@ -5,7 +5,8 @@ on:
     branches: ["main"] # Runs every time you push to the main branch
   workflow_dispatch: # Allows you to run it manually from GitHub
 
-build-macos:
+jobs:
+  build-macos:
     runs-on: macos-latest # Use a macOS virtual machine
 
     steps:
@@ -56,4 +57,3 @@ build-macos:
         with:
           name: Marcador-PSC-Windows-Installer
           path: dist/*.msi
-
