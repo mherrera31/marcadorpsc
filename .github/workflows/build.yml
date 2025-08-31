@@ -19,18 +19,17 @@ jobs:
           python-version: "3.9"
 
       - name: Install dependencies and build
-        run: |
-          python -m pip install --upgrade pip
-          pip install briefcase
-          briefcase create
-          briefcase build
-          briefcase package --no-input
-
-      - name: Upload macOS Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: Marcador-PSC-macOS-Installer
-          path: dist/*.dmg
+          run: |
+            python -m pip install --upgrade pip
+            pip install briefcase
+            briefcase create
+            briefcase build
+            briefcase package --no-input
+            - name: Upload macOS Artifact
+              uses: actions/upload-artifact@v4
+              with:
+              name: Marcador-PSC-macOS-Installer
+              path: dist/*.dmg
 
   build-windows:
     runs-on: windows-latest # Use a Windows virtual machine
